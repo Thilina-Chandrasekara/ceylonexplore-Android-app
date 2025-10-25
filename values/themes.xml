@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Ceylonexplore" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+
+        <!-- Brand colors (Material3 understands these) -->
+        <item name="colorPrimary">@color/dark_green</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Optional: if you still reference Material 2 attrs somewhere -->
+        <item name="colorPrimaryVariant">@color/dark_green</item>
+
+        <!-- Remove default ActionBar (we use our own Toolbar/headers) -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!-- false = light icons (good for dark bar) -->
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Theme.Ceylonexplore" parent="Base.Theme.Ceylonexplore" />
+
+    <style name="Shape.TopRoundedOnly" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+</resources>

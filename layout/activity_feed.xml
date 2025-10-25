@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootFeed"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ce_bg">
+
+    <!-- App bar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/bg_appbar_gradient"
+        android:elevation="6dp"
+        android:title="CeylonExplore"
+        app:title="CeylonExplore"
+        app:titleCentered="false"
+        app:titleTextColor="@android:color/white"
+        app:menu="@menu/main_menu" />
+
+    <!-- Header (chips + top creators) + feed list, all in one scroll -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:paddingBottom="110dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Chips row -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:fillViewport="false"
+                android:scrollbars="none"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:id="@+id/chipRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="start"
+                    android:gravity="start|center_vertical">
+
+                    <!-- Destinations -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDestinations"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="Destinations"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:backgroundTint="#1B5E20"
+                        app:cornerRadius="24dp" />
+
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="0dp" />
+
+
+                    <!-- People -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnPeople"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="People"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:backgroundTint="#1B5E20"
+                        app:cornerRadius="24dp" />
+
+                    <View
+                        android:layout_width="35dp"
+                        android:layout_height="0dp" />
+
+
+                    <!-- Popular -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnPopular"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_vertical"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="Popular"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:backgroundTint="#1B5E20"
+                        app:cornerRadius="24dp" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- Top Creators dynamic card -->
+            <LinearLayout
+                android:id="@+id/cardTopCreators"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical"
+                android:padding="0dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="10dp"
+                    app:cardBackgroundColor="@color/ce_card"
+                    app:strokeColor="@color/ce_divider"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Top Creators \uD83C\uDFC6"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:textColor="@color/ce_text_primary"
+                            android:layout_marginBottom="8dp"/>
+
+                        <!-- Row 1 -->
+                        <LinearLayout
+                            android:id="@+id/rowCreator1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/bg_creator_row"
+                            android:padding="10dp"
+                            android:layout_marginTop="4dp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/imgCreator1"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@mipmap/ic_launcher_round"
+                                android:background="@drawable/avatar_circle_border"
+                                android:clipToOutline="true"
+                                android:scaleType="centerCrop"/>
+
+                            <TextView
+                                android:id="@+id/tvCreatorName1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="10dp"
+                                android:text="—"
+                                android:textStyle="bold"
+                                android:textColor="@color/ce_text_primary"/>
+
+                            <TextView
+                                android:id="@+id/tvCreatorCount1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 posts"
+                                android:textStyle="bold"
+                                android:textColor="@color/ce_text_secondary"
+                                android:background="@drawable/bg_chip_pill"
+                                android:paddingLeft="12dp"
+                                android:paddingRight="12dp"
+                                android:paddingTop="6dp"
+                                android:paddingBottom="6dp"/>
+                        </LinearLayout>
+
+                        <!-- Row 2 -->
+                        <LinearLayout
+                            android:id="@+id/rowCreator2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/bg_creator_row"
+                            android:padding="10dp"
+                            android:layout_marginTop="6dp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/imgCreator2"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@mipmap/ic_launcher_round"
+                                android:background="@drawable/avatar_circle_border"
+                                android:clipToOutline="true"
+                                android:scaleType="centerCrop"/>
+
+                            <TextView
+                                android:id="@+id/tvCreatorName2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="10dp"
+                                android:text="—"
+                                android:textStyle="bold"
+                                android:textColor="@color/ce_text_primary"/>
+
+                            <TextView
+                                android:id="@+id/tvCreatorCount2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 posts"
+                                android:textStyle="bold"
+                                android:textColor="@color/ce_text_secondary"
+                                android:background="@drawable/bg_chip_pill"
+                                android:paddingLeft="12dp"
+                                android:paddingRight="12dp"
+                                android:paddingTop="6dp"
+                                android:paddingBottom="6dp"/>
+                        </LinearLayout>
+
+                        <!-- Row 3 -->
+                        <LinearLayout
+                            android:id="@+id/rowCreator3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/bg_creator_row"
+                            android:padding="10dp"
+                            android:layout_marginTop="6dp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/imgCreator3"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@mipmap/ic_launcher_round"
+                                android:background="@drawable/avatar_circle_border"
+                                android:clipToOutline="true"
+                                android:scaleType="centerCrop"/>
+
+                            <TextView
+                                android:id="@+id/tvCreatorName3"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="10dp"
+                                android:text="—"
+                                android:textStyle="bold"
+                                android:textColor="@color/ce_text_primary"/>
+
+                            <TextView
+                                android:id="@+id/tvCreatorCount3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 posts"
+                                android:textStyle="bold"
+                                android:textColor="@color/ce_text_secondary"
+                                android:background="@drawable/bg_chip_pill"
+                                android:paddingLeft="12dp"
+                                android:paddingRight="12dp"
+                                android:paddingTop="6dp"
+                                android:paddingBottom="6dp"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Your posts list (same id used by Java) -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:nestedScrollingEnabled="false" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom dock -->
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="0dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- My Profile -->
+        <FrameLayout
+            android:id="@+id/btnSearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:src="@drawable/route" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="0dp" />
+
+        <!-- Explore -->
+        <FrameLayout
+            android:id="@+id/btnCreatePost"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:src="@drawable/create_post" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="0dp" />
+
+        <!-- Create Post -->
+        <FrameLayout
+            android:id="@+id/btnMyPosts"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:src="@drawable/my_profile" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

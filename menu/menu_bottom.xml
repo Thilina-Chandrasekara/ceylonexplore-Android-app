@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Order matters: Home (left) -> Add (center) -> Profile (right) -->
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home_outline"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/nav_add"
+        android:icon="@drawable/ic_plus"
+        android:title="@string/add"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_avatar_circle"
+        android:title="@string/profile"/>
+</menu>

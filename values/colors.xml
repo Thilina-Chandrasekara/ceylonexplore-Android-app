@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="hint">#7A7A7A</color>
+    <color name="dark_green">#166534</color>
+    <color name="ce_green">#0E7C66</color>
+    <color name="ce_green_dark">#0A5C4C</color>
+    <color name="ce_green_light">#E5F4F1</color>
+
+    <color name="ce_bg">#FFFFFF</color>
+    <color name="ce_surface">#FFFFFF</color>
+    <color name="ce_card">#FFFFFF</color>
+
+    <color name="ce_primary">#0E7C66</color>
+    <color name="ce_primary_dark">#0A5C4C</color>
+    <color name="ce_accent">#1565C0</color>
+
+    <!-- Text colors (high contrast) -->
+    <color name="ce_text_primary">#111111</color>
+    <color name="ce_text_secondary">#444444</color>
+    <color name="ce_text_muted">#6F7781</color>
+
+    <!-- Elements -->
+    <color name="ce_divider">#E2E6EA</color>
+    <color name="ce_chip_bg">#E8F2FD</color>
+    <color name="ce_warn">#C62828</color>
+    <color name="ce_ok">#2E7D32</color>
+    <color name="darker_gray">#CCCCCC</color>
+
+
+    <color name="ce_secondary">#1565C0</color>      <!-- Blue -->
+    <color name="ce_tonal">#ECEFF4</color>          <!-- Light button fill -->
+    <color name="ce_tertiary">#29B6F6</color>
+
+    <color name="teal_700">#018786</color>
+
+    <!-- Used for the Follow button when already following -->
+    <color name="gray">#808080</color>
+
+    <!-- (Optional helpers if you want lighter/darker grays later) -->
+    <color name="gray_600">#757575</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+
+    <color name="ce_top_bar">#2E3D2F</color>
+    <!--  dark green  -->
+    <color name="ce_title">#FFFFFF</color>
+    <!--  white  -->
+
+    <color name="tint">#333333</color>
+    <color name="link_light_blue">#2196F3</color>
+    <!--  Material light blue 500  -->
+</resources>

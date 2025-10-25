@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootMaps"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- MapLibre Map -->
+    <org.maplibre.android.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Top card (unchanged) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/topCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="#FFFFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="14dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="6dp">
+
+            <!-- START row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/cd_start_icon"
+                    app:srcCompat="@drawable/ic_dot_20"
+                    app:tint="#666666" />
+
+                <TextView
+                    android:id="@+id/tvStart"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Colombo"
+                    android:textColor="#222222"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnOverflow"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/cd_menu"
+                    android:padding="6dp"
+                    app:srcCompat="@drawable/ic_more_vert_24"
+                    app:tint="#444444" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E6E6E6" />
+
+            <!-- END row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/cd_end_icon"
+                    app:srcCompat="@drawable/ic_pin_20"
+                    app:tint="#D93025" />
+
+                <TextView
+                    android:id="@+id/tvEnd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Kandy"
+                    android:textColor="#222222"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnSwap"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/cd_swap"
+                    android:padding="6dp"
+                    app:srcCompat="@drawable/ic_swap_vert_24"
+                    app:tint="#444444" />
+
+                <ImageButton
+                    android:id="@+id/btnRecenter"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/cd_recenter"
+                    android:padding="6dp"
+                    app:srcCompat="@drawable/ic_my_location_24"
+                    app:tint="#444444" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- ********  DRAGGABLE BOTTOM SHEET  ********
+         NOTE: the behavior attribute is REQUIRED.
+    -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:behavior_peekHeight="96dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:strokeWidth="0dp"
+        android:backgroundTint="#FFFFFFFF"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp">
+
+            <!-- drag handle -->
+            <View
+                android:layout_width="36dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bs_drag_handle"
+                android:importantForAccessibility="no" />
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvStopsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Top stops on this route"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <!-- Dynamic stops -->
+            <LinearLayout
+                android:id="@+id/stopsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#EEEEEE" />
+
+            <!-- DISTANCE header -->
+            <TextView
+                android:id="@+id/tvDistanceHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Distance"
+                android:textStyle="bold" />
+
+            <!-- Distances row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:id="@+id/tvDriveDistance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="—"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tvWalkDistance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="—"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tvBikeDistance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="—"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Icons + checks -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start|center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/ivDrive"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        app:srcCompat="@drawable/ic_car_24"
+                        app:tint="#000000" />
+                    <ImageView
+                        android:id="@+id/ivDriveOk"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        app:srcCompat="@drawable/ic_check_24"
+                        app:tint="#000000"
+                        android:visibility="gone"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start|center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/ivWalk"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        app:srcCompat="@drawable/ic_walk_24"
+                        app:tint="#000000" />
+                    <ImageView
+                        android:id="@+id/ivWalkOk"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        app:srcCompat="@drawable/ic_check_24"
+                        app:tint="#000000"
+                        android:visibility="gone"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start|center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/ivBike"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        app:srcCompat="@drawable/ic_bike_24"
+                        app:tint="#000000" />
+                    <ImageView
+                        android:id="@+id/ivBikeOk"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        app:srcCompat="@drawable/ic_check_24"
+                        app:tint="#000000"
+                        android:visibility="gone"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Durations row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:id="@+id/tvDriveDuration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="—" />
+
+                <TextView
+                    android:id="@+id/tvWalkDuration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="—" />
+
+                <TextView
+                    android:id="@+id/tvBikeDuration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="—" />
+            </LinearLayout>
+
+            <!-- Share -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="end">
+                <Button
+                    android:id="@+id/btnShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Share" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

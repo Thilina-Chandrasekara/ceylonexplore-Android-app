@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">ceylonexplore</string>
+
+    <!-- Geoapify key used for tiles/routing -->
+    <string name="geoapify_api_key">b516cda07d4846b69bfc0e37b5bb4aa5</string>
+    <!-- add this -->
+    <string name="back">Back</string>
+    <string name="settings_and_privacy">Settings and privacy</string>
+    <string name="your_account">Your account</string>
+    <string name="change_password">Change password</string>
+    <string name="theme">Theme</string>
+    <string name="notifications">Notifications</string>
+    <string name="logout">Log out</string>
+    <string name="appearance">Appearance</string>
+    <string name="system_default">System default</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="menu_settings_and_privacy">Settings and Privacy</string>
+    <string name="undefined">undefined</string>
+    <string name="cd_start_icon">Start marker icon</string>
+    <string name="cd_end_icon">End marker icon</string>
+    <string name="cd_menu">More options</string>
+    <string name="cd_swap">Swap start and end</string>
+    <string name="cd_recenter">Recenter map</string>
+
+
+    <string name="explore_now">Explore Now</string>
+    <string name="where_to_go">Where do you want to go?</string>
+    <string name="popular_now">Popular Now</string>
+
+    <string name="home">Home</string>
+    <string name="add">Add</string>
+    <string name="profile">Profile</string>
+</resources>
